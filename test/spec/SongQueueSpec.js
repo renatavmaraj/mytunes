@@ -75,4 +75,15 @@ describe('SongQueue', function() {
       SongModel.prototype.play.restore();
     });
   });
+
+  describe('playNext', function() {
+    it('plays the next song in the queue', function() {
+      sinon.spy(SongModel.prototype, 'play');
+      var songQueue = new SongQueue(songData);
+      songQueue.playFirst();
+      songQueue.playNext();
+      expect(songQueue.at(1).play).to.have.been.called;
+      SongModel.prototype.play.restore();
+    })
+  })
 });

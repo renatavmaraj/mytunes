@@ -5,7 +5,10 @@ var LibraryView = Backbone.View.extend({
 
   initialize: function() {
     this.render();
-
+    //get data.results back from the collection
+    //when the data is successfully received from parse,
+    //put that data into this init function
+    this.collection.on('sync', this.render, this);
   },
 
   render: function() {
